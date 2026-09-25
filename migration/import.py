@@ -11,7 +11,7 @@ for f in files:
         subprocess.run(['git','-C',str(p),'checkout','--quiet',f['commit']],check=True)
         cache[key]=p
     src=cache[key]/f['source']
-    data=src.read_bytes()
+    data=subprocess.check_output(['git','-C',str(cache[key]),'cat-file','blob',f['sha']])
     sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
     if sha!=f['sha']:raise ValueError('Source mismatch: '+f['source'])
     dest=root/f['destination']
