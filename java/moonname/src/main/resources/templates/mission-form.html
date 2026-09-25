@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Add mission</title>
+</head>
+<body>
+<h1>Add mission</h1>
+
+<p th:if="${param.success}">Mission saved.</p>
+
+<form th:action="@{/missions/ajouter}"
+      th:object="${form}"
+      method="post">
+
+    <label for="nom">Name</label>
+    <input id="nom" th:field="*{nom}" required>
+    <p th:errors="*{nom}"></p>
+
+    <label for="dateDepart">Departure date</label>
+    <input id="dateDepart" type="date"
+           th:field="*{dateDepart}" required>
+    <p th:errors="*{dateDepart}"></p>
+
+    <label for="prix">Price (€)</label>
+    <input id="prix" type="number"
+           th:field="*{prix}" min="0.01" step="0.01" required>
+    <p th:errors="*{prix}"></p>
+
+    <label for="placesDisponibles">Places</label>
+    <input id="placesDisponibles" type="number"
+           th:field="*{placesDisponibles}" min="1" required>
+    <p th:errors="*{placesDisponibles}"></p>
+
+    <label for="fuseeId">Rocket</label>
+    <select id="fuseeId" th:field="*{fuseeId}" required>
+        <option value="">Select a rocket</option>
+        <option th:each="fusee : ${fusees}"
+                th:value="${fusee.id}"
+                th:text="${fusee.nom}"></option>
+    </select>
+    <p th:errors="*{fuseeId}"></p>
+
+    <button type="submit">Save mission</button>
+</form>
+
+<a th:href="@{/}">Home</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>My missions</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h1>My missions</h1>
+
+<p th:if="${#lists.isEmpty(missions)}">No assigned missions.</p>
+
+<ul>
+    <li th:each="mission : ${missions}">
+        <a th:href="@{/astronaute/missions/{id}(id=${mission.id})}"
+           th:text="${mission.nom}"></a>
+        <span th:text="${mission.dateDepart}"></span>
+        <span th:text="${mission.statut}"></span>
+    </li>
+</ul>
+</body>
+</html>

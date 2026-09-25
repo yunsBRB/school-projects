@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Edit rocket</title>
+</head>
+<body>
+<h1>Edit rocket</h1>
+
+<form th:action="@{/fusees/{id}/modifier(id=${id})}"
+      th:object="${form}"
+      method="post">
+
+    <label for="nom">Name</label>
+    <input id="nom" th:field="*{nom}" required>
+    <p th:errors="*{nom}"></p>
+
+    <label for="pays">Country</label>
+    <input id="pays" th:field="*{pays}" required>
+    <p th:errors="*{pays}"></p>
+
+    <button type="submit">Save changes</button>
+</form>
+
+<a th:href="@{/fusees/{id}(id=${id})}">Cancel</a>
+</body>
+</html>

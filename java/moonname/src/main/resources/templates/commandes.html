@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>My orders</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h1>My orders</h1>
+
+<p th:if="${#lists.isEmpty(commandes)}">No orders yet.</p>
+
+<ul>
+    <li th:each="commande : ${commandes}">
+        <a th:href="@{/commandes/{id}(id=${commande.id})}">
+            Order #<span th:text="${commande.id}"></span>
+        </a>
+        <span th:text="${commande.dateCreation}"></span>
+        <span th:text="${commande.total()}"></span> €
+    </li>
+</ul>
+</body>
+</html>

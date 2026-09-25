@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Mission</title>
+</head>
+<body>
+<a th:href="@{/missions}">Missions</a>
+<h1 th:text="${mission.nom}"></h1>
+
+<p>Rocket: <span th:text="${mission.fuseeNom}"></span></p>
+<p>Astronaut: <span th:text="${mission.astronauteNom}"></span></p>
+<p>Departure: <span th:text="${mission.dateDepart}"></span></p>
+<p>Price: <span th:text="${mission.prix}"></span> €</p>
+<p>Available: <span th:text="${mission.placesDisponibles}"></span></p>
+<p>Status: <span th:text="${mission.statut}"></span></p>
+
+<a sec:authorize="hasAuthority('CLIENT')"
+   th:href="@{/pierres/ajouter}">Create a stone</a>
+
+<div sec:authorize="hasAuthority('ADMIN')">
+    <a th:href="@{/missions/{id}/modifier(id=${mission.id})}">
+        Edit
+    </a>
+
+    <form th:action="@{/missions/{id}/supprimer(id=${mission.id})}"
+          method="post">
+        <button type="submit">Delete</button>
+    </form>
+</div>
+</body>
+</html>

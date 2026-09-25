@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>My tickets</title>
+</head>
+<body>
+<a th:href="@{/commandes}">My orders</a>
+<h1>Order #<span th:text="${commande.id}"></span></h1>
+
+<article th:each="billet : ${commande.billets}">
+    <h2>Ticket #<span th:text="${billet.id}"></span></h2>
+    <p th:text="${billet.nomInscrit}"></p>
+    <p th:text="${billet.message}"></p>
+    <p>Mission: <span th:text="${billet.missionNom}"></span></p>
+    <p>Status: <span th:text="${billet.statut}"></span></p>
+    <p><span th:text="${billet.prix}"></span> €</p>
+</article>
+
+<p>Total: <span th:text="${commande.total()}"></span> €</p>
+</body>
+</html>

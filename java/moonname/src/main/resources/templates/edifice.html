@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Moon wall</title>
+</head>
+<body>
+<a href="/">Home</a>
+<h1>Moon wall</h1>
+
+<p th:if="${#lists.isEmpty(pierres)}">The first stone is still on its way.</p>
+
+<article th:each="pierre : ${pierres}">
+    <h2 th:text="${pierre.nomInscrit}"></h2>
+    <p th:text="${pierre.message}"></p>
+    <p th:text="${pierre.missionNom}"></p>
+</article>
+</body>
+</html>

@@ -1,0 +1,26 @@
+idee initial :
+
+une plateforme qui v permettre aux user de se connecter - cree un compte (username password) 
+pour pouvoir acheter un billet nominal sur la lune
+user : - achete son billet (pierre lunaire), 
+	- note ce qu'il veut dessus,
+	- la pierre lunaire est envoyé sur la Lune
+	- le user aura ajouté sa pierre à l'édifice
+
+// th:each ça va parcourir la liste.
+//th:text ça va afficher le nom grace à getNom()
+// th:action = indique où envoyer le formulaire
+// th:object = relie à mon objet FuseeForm
+// th:field = relie chaque champ à sa propriété Java
+
+mooname
+
+Un projet Spring Boot MVC : tu achètes une inscription (un nom, un psuedo ou autre) qui sera déposée sur une pierre lunaire.
+
+structure :
+
+Les controllers appellent les services, les services passent par les repositories, et les vues ne voient que des DTO. Le reste suit le découpage habituel : entities, models, enums, configs, templates, static.
+
+Côté données : une fusée peut servir à plusieurs missions, une mission a une fusée et un astronaute, un utilisateur a un panier, une commande garde le nom et le prix payés.
+
+L'achat se fait d'un bloc : soit la commande, les places et le panier passent ensemble, soit rien. Un verrou en base empêche de vendre deux fois la dernière place.

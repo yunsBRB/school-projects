@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: MoonName
+  datasource:
+    url: jdbc:postgresql://localhost:5434/moonname
+    username: postgres
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080

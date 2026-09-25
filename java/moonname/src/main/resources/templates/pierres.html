@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>My stones — MoonName</title>
+</head>
+<body>
+<a th:href="@{/}">Home</a>
+<h1>My stones</h1>
+<a th:href="@{/pierres/ajouter}">Create a stone</a>
+<a th:href="@{/panier}">My cart</a>
+<p th:if="${#lists.isEmpty(pierres)}">No stones yet.</p>
+<article th:each="pierre : ${pierres}">
+    <h2><a th:href="@{/pierres/{id}(id=${pierre.id})}" th:text="${pierre.nomInscrit}"></a></h2>
+    <p th:text="${pierre.message}"></p>
+    <p>Mission: <span th:text="${pierre.missionNom}"></span></p>
+    <p>Status: <span th:text="${pierre.statut}"></span></p>
+    <form th:if="${pierre.statut.name() == 'BROUILLON' and !pierre.dansPanier}"
+          th:action="@{/panier/ajouter/{id}(id=${pierre.id})}" method="post">
+        <button type="submit">Add to cart</button>
+    </form>
+</article>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MoonName — Leave a little of you</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header>
+    <a class="brand" th:href="@{/}">MOONNAME.</a>
+
+    <nav aria-label="Main navigation">
+        <a th:href="@{/missions}">Missions</a>
+        <a th:href="@{/edifice}">Moon wall</a>
+
+        <a sec:authorize="isAnonymous()"
+           th:href="@{/login}">Sign in</a>
+
+        <a sec:authorize="hasAuthority('CLIENT')"
+           th:href="@{/pierres}">My stones</a>
+
+        <a sec:authorize="hasAuthority('ADMIN')"
+           th:href="@{/fusees}">Rockets</a>
+
+        <a sec:authorize="hasAuthority('ASTRONAUTE')"
+           th:href="@{/astronaute}">My missions</a>
+    </nav>
+</header>
+
+<main class="hero">
+    <p class="eyebrow">Earth → Moon</p>
+
+    <h1>A little<br>of <em>you.</em></h1>
+
+    <p>Your name. A stone. Somewhere on the Moon.</p>
+
+    <a class="button"
+       sec:authorize="isAnonymous()"
+       th:href="@{/inscription}">Leave your name ↗</a>
+
+    <a class="button"
+       sec:authorize="hasAuthority('CLIENT')"
+       th:href="@{/pierres/ajouter}">Create your stone ↗</a>
+
+    <a class="button"
+       sec:authorize="hasAnyAuthority('ADMIN', 'ASTRONAUTE')"
+       th:href="@{/missions}">Explore missions ↗</a>
+</main>
+
+<footer>
+    <p>A fictional lunar project.</p>
+    <a th:href="@{/edifice}">Explore the Moon wall ↗</a>
+</footer>
+</body>
+</html>

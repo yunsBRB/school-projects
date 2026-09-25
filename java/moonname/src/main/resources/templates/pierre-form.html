@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Personalize your stone</title>
+</head>
+<body>
+<h1>Personalize your stone</h1>
+
+<p th:if="${param.success}">Draft saved.</p>
+
+<form th:action="@{/pierres/ajouter}"
+      th:object="${form}"
+      method="post">
+
+    <label for="nomInscrit">Name</label>
+    <input id="nomInscrit" th:field="*{nomInscrit}"
+           maxlength="40" required>
+    <p th:errors="*{nomInscrit}"></p>
+
+    <label for="message">Message</label>
+    <textarea id="message" th:field="*{message}"
+              maxlength="200" required></textarea>
+    <p th:errors="*{message}"></p>
+
+    <button type="submit">Save draft</button>
+</form>
+
+<a th:href="@{/}">Home</a>
+</body>
+</html>

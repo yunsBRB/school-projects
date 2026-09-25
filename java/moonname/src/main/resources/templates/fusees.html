@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Rockets</title>
+</head>
+<body>
+<h1>Rockets</h1>
+<ul>
+    <li th:each="fusee : ${fusees}">
+        <a th:href="@{/fusees/{id}(id=${fusee.id})}"
+           th:text="${fusee.nom}"></a>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/fusees/ajouter}">Add a rocket</a>
+    </li>
+</ul>
+
+
+
+</body>
+</html>
+

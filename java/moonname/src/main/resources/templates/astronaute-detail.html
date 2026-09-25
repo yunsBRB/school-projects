@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Mission tracking</title>
+</head>
+<body>
+<a th:href="@{/astronaute}">My missions</a>
+<h1 th:text="${mission.nom}"></h1>
+<p th:text="${mission.statut}"></p>
+
+<form th:if="${mission.statut.name() == 'PLANIFIEE'}"
+      th:action="@{/astronaute/missions/{id}/avancer(id=${mission.id})}"
+      method="post">
+    <button type="submit">Launch mission</button>
+</form>
+
+<article th:each="pierre : ${pierres}">
+    <h2 th:text="${pierre.nomInscrit}"></h2>
+    <p th:text="${pierre.message}"></p>
+    <p th:text="${pierre.statut}"></p>
+
+    <form th:if="${mission.statut.name() == 'EN_VOL'
+                       and pierre.statut.name() == 'ENVOYEE'}"
+          th:action="@{/astronaute/missions/{id}/pierres/{pierreId}/deposer(
+                  id=${mission.id}, pierreId=${pierre.id})}"
+          method="post">
+        <button type="submit">Confirm deposit</button>
+    </form>
+</article>
+
+<form th:if="${mission.statut.name() == 'EN_VOL'}"
+      th:action="@{/astronaute/missions/{id}/avancer(id=${mission.id})}"
+      method="post">
+    <button type="submit">Complete mission</button>
+</form>
+</body>
+</html>

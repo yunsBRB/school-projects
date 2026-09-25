@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title th:text="${fusee.nom}">Rocket</title>
+</head>
+<body>
+<h1 th:text="${fusee.nom}"></h1>// th:text ça va afficher le nom grace à getNom()
+<p th:text="${fusee.pays}"></p> //tth:text="${fusee.pays}" affiche son pays grâce à getPays().
+<a th:href="@{/fusees}">back</a> //th:href cree un lien vers la liste de fusees
+<a th:href="@{/fusees/{id}/modifier(id=${fusee.id})}">Edit rocket</a>
+
+
+<form th:action="@{/fusees/{id}/supprimer(id=${fusee.id})}"
+      method ="post">
+    <button type="submit"> Delete rocket</button>
+</form>  //th: action va construire l'adresse avec l'identifiant de la fusée affichée
+</body>
+</html>
+

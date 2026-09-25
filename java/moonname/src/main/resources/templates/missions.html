@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Missions — MoonName</title>
+</head>
+<body>
+<a th:href="@{/}">Home</a>
+<h1>Missions</h1>
+<p th:if="${#lists.isEmpty(missions)}">No missions available.</p>
+<article th:each="mission : ${missions}">
+    <h2><a th:href="@{/missions/{id}(id=${mission.id})}" th:text="${mission.nom}"></a></h2>
+    <p>Rocket: <span th:text="${mission.fuseeNom}"></span></p>
+    <p>Departure: <span th:text="${mission.dateDepart}"></span></p>
+    <p>Price: <span th:text="${mission.prix}"></span> €</p>
+    <p>Available places: <span th:text="${mission.placesDisponibles}"></span></p>
+</article>
+</body>
+</html>

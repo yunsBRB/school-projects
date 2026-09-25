@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<a th:href="@{/pierres}">My stones</a>
+<h1>Cart</h1>
+
+<p th:if="${erreur}" th:text="${erreur}"></p>
+<p th:if="${#lists.isEmpty(pierres)}">Your cart is empty.</p>
+
+<article th:each="pierre : ${pierres}">
+    <h2 th:text="${pierre.nomInscrit}"></h2>
+    <p th:text="${pierre.message}"></p>
+    <p th:text="${pierre.missionNom}"></p>
+    <p><span th:text="${pierre.prix}"></span> €</p>
+
+    <form th:action="@{/panier/retirer/{id}(id=${pierre.id})}"
+          method="post">
+        <button type="submit">Remove</button>
+    </form>
+</article>
+
+<div th:unless="${#lists.isEmpty(pierres)}">
+    <p>Total: <span th:text="${total}"></span> €</p>
+
+    <form th:action="@{/commandes}" method="post">
+        <button type="submit">Confirm simulated purchase</button>
+    </form>
+</div>
+</body>
+</html>

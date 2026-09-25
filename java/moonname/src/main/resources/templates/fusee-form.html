@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Add rocket</title>
+</head>
+<body>
+<h1>Add rocket</h1>
+<form th:action=" @{/fusees/ajouter}"
+th:object="${form}"
+method="post">
+
+    <label for="nom">Name</label>
+    <input id="nom" th:field="*{nom}" required>
+    <p th:errors="*{nom}"></p>
+
+    <label for ="pays">Country / Region</label>
+    <input id="pays" th:field="*{pays}" required>
+    <p th:errors="*{pays}"></p>
+
+    <button type="submit">Add</button>
+
+
+</form>
+
+<a th:href="@{/fusees}"> back</a>
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <meta charset="UTF-8">
+    <title>Your stone</title>
+</head>
+<body>
+<h1>Your stone</h1>
+
+<h2 th:text="${pierre.nomInscrit}"></h2>
+<p th:text="${pierre.message}"></p>
+<p th:text="${pierre.statut}"></p>
+
+<a th:href="@{/pierres/ajouter}">Create another stone</a>
+<a th:href="@{/}">Home</a>
+</body>
+</html>
