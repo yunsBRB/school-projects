@@ -1,9 +1,9 @@
 # Compte bancaire
 
-Projet pédagogique C# autour d’une banque, d’une personne et d’un compte courant.
+Projet pédagogique C# : banque, personne et compte courant.
 
-Depuis la racine, avec le SDK indiqué dans le `.csproj` :
+Depuis `csharp/bank-account`, avec le SDK indiqué dans le projet :
 
 ```sh
-dotnet run --project projects/bank-account/ExoCompteCourant.csproj
+dotnet run --project ExoCompteCourant.csproj
 ```

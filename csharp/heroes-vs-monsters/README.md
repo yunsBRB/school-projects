@@ -4,7 +4,7 @@ Jeu de combat en console écrit en C#, réalisé pour travailler la programmatio
 
 ## Lancer
 
-Prérequis : SDK .NET 10.
+Prérequis : SDK .NET 10. Se placer dans `csharp/heroes-vs-monsters`.
 
 ```sh
 dotnet run --project "src/HvM 2.0.csproj"
@@ -16,4 +16,4 @@ Les sources et le projet sont dans `src/`. Les sorties de compilation (`bin`, `o
 
 ## Historique
 
-Ce dépôt reprend la version auparavant nommée `HvM`. Les autres essais restent archivés, notamment [HvM-2.0](https://github.com/yunsBRB/HvM-2.0) et [HerosVsMonster](https://github.com/yunsBRB/HerosVsMonster). Leurs différences ne sont pas fusionnées artificiellement avec cette version.
+Ce dossier reprend la version auparavant nommée `HvM`. Les autres essais restent conservés dans les archives privées. Leurs différences ne sont pas fusionnées artificiellement avec cette version.

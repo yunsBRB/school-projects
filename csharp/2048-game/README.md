@@ -1,11 +1,9 @@
 # 2048
 
-Jeu en console C#.
-
-Depuis la racine du dépôt, avec le SDK indiqué dans le `.csproj` :
+Jeu en console C#. Depuis `csharp/2048-game`, avec le SDK indiqué dans le projet :
 
 ```sh
-dotnet run --project "projects/2048-game/2048 game.csproj"
+dotnet run --project "2048 game.csproj"
 ```
 
-`Program.cs` contient le programme. Les fichiers compilés ne sont pas versionnés.
+Le programme est dans `Program.cs`.

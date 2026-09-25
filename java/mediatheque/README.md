@@ -4,7 +4,7 @@ Application console pédagogique pour gérer des médias, membres et emprunts. L
 
 ## Lancer
 
-Installer un JDK 17 ou supérieur, puis depuis la racine :
+Installer un JDK 17 ou supérieur, puis depuis le dossier `java/mediatheque` :
 
 ```powershell
 javac -encoding UTF-8 -d build "@sources.txt"

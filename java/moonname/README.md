@@ -12,7 +12,7 @@ Java 17 minimum selon le `pom.xml`, Spring Boot 4.1.1, Thymeleaf, Spring Securit
 
 1. Préparer PostgreSQL sur `localhost:5434`, avec une base `moonname` et l'utilisateur `postgres`, conformément à `src/main/resources/application.yaml`.
 2. Définir `DB_PASSWORD` avec le mot de passe local de cette base. Ne pas le versionner.
-3. Depuis la racine du dépôt, lancer sous PowerShell :
+3. Depuis le dossier `java/moonname`, lancer sous PowerShell :
 
 ```powershell
 $env:DB_PASSWORD = "VOTRE_MOT_DE_PASSE_LOCAL"
@@ -45,4 +45,4 @@ Les tests utilisent une configuration H2 en mémoire isolée, définie uniquemen
 
 - Les onze scénarios métier de l'ancien projet sont adaptés au modèle actuel ; validation PostgreSQL encore nécessaire.
 - Données de démonstration, migrations SQL et provisionnement des rôles à compléter.
-- La compilation et les nouveaux tests doivent être confirmés par la CI : l'environnement de préparation ne pouvait pas résoudre Maven Central.
+- Les tests H2 valident les scénarios automatisés ; les verrous PostgreSQL nécessitent une validation spécifique.
